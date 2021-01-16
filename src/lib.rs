@@ -16,8 +16,6 @@ pub enum Endian {
   BE,
 }
 
-
-
 #[derive(Debug, Clone)]
 pub struct Base64StringFactory {
   url_safe: bool,

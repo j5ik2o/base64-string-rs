@@ -11,7 +11,7 @@ readme = "README.md"
 repository = "https://github.com/j5ik2o/base64-string-rs"
 
 [badges]
-github = { repository = "j5ik2o/base-string-rs", workflow = "Rust" }
+github = { repository = "j5ik2o/base64-string-rs", workflow = "Rust" }
 
 [dependencies]
 base64 = "0.13.0"

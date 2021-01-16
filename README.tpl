@@ -1,6 +1,6 @@
 # {{crate}}
 
-A Rust crate for generating ULIDs.
+A Rust crate for Base64 string.
 
 {{badges}}
 [![crates.io](https://img.shields.io/crates/v/base64-string-rs.svg)](https://crates.io/crates/base64-string-rs)

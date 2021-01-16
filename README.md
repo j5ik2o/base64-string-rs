@@ -1,6 +1,6 @@
 # base64-string-rs
 
-A Rust crate for generating ULIDs.
+A Rust crate for Base64 string.
 
 [![Workflow Status](https://github.com/j5ik2o/base-string-rs/workflows/Rust/badge.svg)](https://github.com/j5ik2o/base-string-rs/actions?query=workflow%3A%22Rust%22)
 [![crates.io](https://img.shields.io/crates/v/base64-string-rs.svg)](https://crates.io/crates/base64-string-rs)

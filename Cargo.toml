@@ -1,10 +1,17 @@
 [package]
 name = "base64-string-rs"
 version = "0.0.1"
+description = "A Rust crate for base64 string"
 authors = ["Junichi Kato <j5ik2o@gmail.com>"]
 edition = "2018"
+icense = "MIT OR Apache-2.0"
+keywords = ["base64", "string"]
+categories = ["data-structures","encoding","parsing","value-formatting"]
+readme = "README.md"
+repository = "https://github.com/j5ik2o/base64-string-rs"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[badges]
+github = { repository = "j5ik2o/base-string-rs", workflow = "Rust" }
 
 [dependencies]
 base64 = "0.13.0"

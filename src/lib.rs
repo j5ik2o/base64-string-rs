@@ -1,10 +1,29 @@
+//! # About Base64String
+//!
+//! Base64String is a string type in Base64 format that contains meta-information about the encoding.
+//!
+//! # Usage
+//!
+//! ```rust
+//! use base64_string_rs::Base64StringFactory;
+//!
+//! let str = "0123ABC";
+//! let factory = Base64StringFactory::default();
+//! let encoded = factory.encode_from_string(str);
+//! println!("encoded = {}", encoded);
+//! // encoded = Base64String(value = MDEyM0FCQw, url_safe = false, padding = false)
+//! let decoded = encoded.decode_to_string().unwrap();
+//! println!("decoded = {}", decoded); // 0123ABC
+//! # assert_eq!(decoded, str);
+//! ```
 #[cfg(test)]
 extern crate quickcheck;
 #[cfg(test)]
 #[macro_use(quickcheck)]
 extern crate quickcheck_macros;
 
-use std::fmt::Debug;
+use std::fmt;
+use std::fmt::{Debug, Formatter};
 
 use anyhow::Result;
 use base64::{CharacterSet, Config};
@@ -74,6 +93,16 @@ pub enum Base64DecodeError {
   DecodeError(String),
 }
 
+impl fmt::Display for Base64String {
+  fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
+    write!(
+      f,
+      "Base64String(value = {}, url_safe = {}, padding = {})",
+      self.value, self.url_safe, self.padding
+    )
+  }
+}
+
 impl Base64String {
   pub fn new(value: String, url_safe: bool, padding: bool) -> Self {
     Self {
@@ -95,7 +124,7 @@ impl Base64String {
     self.value.len()
   }
 
-  pub fn to_string(&self) -> &str {
+  pub fn to_value(&self) -> &str {
     &self.value
   }
 
@@ -134,10 +163,22 @@ impl Base64String {
 mod tests {
   use super::*;
 
+  #[test]
+  fn test() {
+    let str = "0123ABC";
+    let factory = Base64StringFactory::default();
+    let encoded = factory.encode_from_string(str);
+    println!("encoded = {}", encoded);
+    let decoded = encoded.decode_to_string().unwrap();
+    println!("decoded = {}", decoded);
+    assert_eq!(decoded, str);
+  }
+
   #[quickcheck]
   fn encode_decode_string(s: String) {
     let factory = Base64StringFactory::new(false, false);
     let encoded = factory.encode_from_string(&s);
+    println!("{}", encoded);
     let decoded = encoded.decode_to_string().ok().unwrap();
     assert_eq!(decoded, s);
   }

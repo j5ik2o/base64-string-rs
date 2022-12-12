@@ -14,7 +14,7 @@ repository = "https://github.com/j5ik2o/base64-string-rs"
 github = { repository = "j5ik2o/base64-string-rs", workflow = "Rust" }
 
 [dependencies]
-base64 = "0.13.0"
+base64 = "0.20.0"
 num-bigint = "0.4.0"
 anyhow = "1.0"
 
